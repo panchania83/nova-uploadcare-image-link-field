@@ -1,6 +1,6 @@
 <?php
 
-namespace Enflow\NovaUploadcare;
+namespace Enflow\NovaUploadcareField;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Events\ServingNova;
