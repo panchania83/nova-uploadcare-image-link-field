@@ -2,7 +2,7 @@
 
 An file field using the UploadCare API.
  
-You can upload an file through drag-and-drop, url or google drive. The image is stored on Uploadcare and saved as a url in the model.
+You can upload an file through drag-and-drop, url or google drive. The file is stored on Uploadcare and saved as a url in the model.
 
 ### Installing
 
@@ -23,13 +23,13 @@ Add Uploadcare Public Key to your `config/services.php` array
 Register the field in the Nova resource:
 
 ~~~~
-use Enflow\NovaUploadcareFile\UploadcareFile;
+use Enflow\NovaUploadcareFile\Uploadcare;
 ~~~~
 
 Use the field:
 
 ~~~~
-UploadcareFile::make('File')
+Uploadcare::make('File')
 ~~~~
 
 ## Credits
