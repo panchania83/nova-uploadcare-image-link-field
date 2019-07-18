@@ -8,6 +8,8 @@ class Uploadcare extends Field
 {
     public $component = 'uploadcare';
 
+    public $showOnIndex = false;
+
     public function __construct($name, $attribute = null, $resolveCallback = null)
     {
     	parent::__construct($name, $attribute, $resolveCallback);
