@@ -23,7 +23,7 @@ Add Uploadcare Public Key to your `config/services.php` array
 Register the field in the Nova resource:
 
 ~~~~
-use Enflow\NovaUploadcareFile\Uploadcare;
+use Enflow\NovaUploadcareField\Uploadcare;
 ~~~~
 
 Use the field:
