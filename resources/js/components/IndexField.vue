@@ -1,5 +1,7 @@
 <template>
-<p class=""><img :src="field.value" class="rounded-sm w-9 h-9" style="object-fit: cover;"></p>
+<p class="">
+    <a v-if="field.value" class="btn btn-link dim cursor-pointer text-80" :href="field.value" target="_blank">View File</a>
+</p>
 </template>
 
 <script>

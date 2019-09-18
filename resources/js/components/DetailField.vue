@@ -7,7 +7,7 @@
         </div>
         <div class="w-3/4 py-4">
             <div class="mt-2 w-full bg-white rounded-lg px-0" style="width: 400px; ">
-                <img :src="field.value" class="img-fluid rounded mx-auto d-block" alt="" style="width:100%; margin: auto;">
+                <a class="btn btn-link dim cursor-pointer text-80" :href="field.value" target="_blank">View File</a>
             </div>
         </div>
     </div>

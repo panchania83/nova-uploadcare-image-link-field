@@ -1,19 +1,19 @@
 <template>
     <default-field :field="field">
         <template slot="field">
-            <div v-if="field.value" class="mt-2 w-full bg-white rounded-lg px-0" style="width: 400px; ">
-                <a style="color: #FFFFFF; text-shadow: 0 1px 2px rgba(0,0,0,.2); font-weight: 800; outline:none;" :href="field.value" target="_blank">View File</a>
+            <div v-if="value" class="mb-3">
+                <a class="btn btn-link text-primary cursor-pointer text-80 mr-3" :href="value" target="_blank">View File</a>
+
+                <a class="btn btn-link text-danger opacity-50 cursor-pointer" @click.prevent="clear">Clear</a>
             </div>
             <uploadcare
+                    class="btn btn-default btn-primary cursor-pointer"
                     :id="field.name"
-                    class="ml-auto btn btn-default btn-primary mr-3"
                     :publicKey="field.key"
-                    :imagesOnly="true"
-                    imageShrink="500 x 500 85%"
-                    tabs="file url gdrive"
-                    @success="onSuccess"
-                    @error="onError">
-                <button style="color: #FFFFFF; text-shadow: 0 1px 2px rgba(0,0,0,.2); font-weight: 800; outline:none;">Upload new file</button>
+                    imageShrink="2000 x 2000 85%"
+                    @success="onSuccess">
+                <div v-if="value">Upload new file</div>
+                <div v-if="!value">Upload file</div>
             </uploadcare>
             <p v-if="hasError" class="my-2 text-danger">
                 {{ firstError }}
@@ -44,8 +44,13 @@
                 formData.append(this.field.attribute, this.value || '')
             },
 
-            onSuccess(image) {
-                this.value = image.cdnUrl;
+            onSuccess(file) {
+                console.log(file);
+                this.value = file.cdnUrl;
+            },
+
+            clear() {
+                this.value = null;
             }
         }
     }
