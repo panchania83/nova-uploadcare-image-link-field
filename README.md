@@ -6,31 +6,31 @@ You can upload a file through drag-and-drop, url or Google Drive. The file is st
 
 ### Installing
 
-~~~~
+```bash
 composer require enflow/nova-uploadcare-field
-~~~~
+```
 
 ### Getting Started
 
 Add Uploadcare Public Key to your `config/services.php` array
 
-~~~~
+```php
 'uploadcare' => [
     'public_key' => 'XXXXX',
 ],
-~~~~
+```
 
 Register the field in the Nova resource:
 
-~~~~
+```php
 use Enflow\NovaUploadcareField\Uploadcare;
-~~~~
+```
 
 Use the field:
 
-~~~~
+```php
 Uploadcare::make('File')
-~~~~
+```
 
 ## Credits
 Largely based on the package [`nova-uploadcare-imagefield`](https://bitbucket.org/adnanchowdhury/nova-uploadcare-imagefield/), created by Adnan Chowdhury. Thanks Adnan!
