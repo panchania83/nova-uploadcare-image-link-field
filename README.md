@@ -2,7 +2,7 @@
 
 An file field using the UploadCare API.
  
-You can upload an file through drag-and-drop, url or google drive. The file is stored on Uploadcare and saved as a url in the model.
+You can upload a file through drag-and-drop, url or Google Drive. The file is stored on Uploadcare and saved as an URL in the model.
 
 ### Installing
 
@@ -15,9 +15,9 @@ composer require enflow/nova-uploadcare-field
 Add Uploadcare Public Key to your `config/services.php` array
 
 ~~~~
-    'uploadcare' => [
-        'public_key' => 'XXXXX',
-    ],
+'uploadcare' => [
+    'public_key' => 'XXXXX',
+],
 ~~~~
 
 Register the field in the Nova resource:
@@ -33,7 +33,7 @@ Uploadcare::make('File')
 ~~~~
 
 ## Credits
-Largely based on the package package [`nova-uploadcare-imagefield`](https://bitbucket.org/adnanchowdhury/nova-uploadcare-imagefield/), created by Adnan Chowdhury.
+Largely based on the package [`nova-uploadcare-imagefield`](https://bitbucket.org/adnanchowdhury/nova-uploadcare-imagefield/), created by Adnan Chowdhury. Thanks Adnan!
 
 ## Contributing
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
@@ -43,7 +43,7 @@ If you discover any security related issues, please email michel@enflow.nl inste
 
 ## Credits
 - [Michel Bardelmeijer](https://github.com/mbardelmeijer)
-* [Adnan Chowdhury](https://bitbucket.org/adnanchowdhury) 
+- [Adnan Chowdhury](https://bitbucket.org/adnanchowdhury) 
 - [All Contributors](../../contributors)
 
 ## About Enflow
