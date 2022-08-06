@@ -45,7 +45,6 @@
             },
 
             onSuccess(file) {
-                console.log(file);
                 this.value = file.cdnUrl;
             },
 

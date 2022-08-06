@@ -1,5 +1,9 @@
-Nova.booting((Vue, router) => {
-    Vue.component('index-uploadcare', require('./components/IndexField'));
-    Vue.component('detail-uploadcare', require('./components/DetailField'));
-    Vue.component('form-uploadcare', require('./components/FormField'));
+import IndexField from './components/IndexField'
+import DetailField from './components/DetailField'
+import FormField from './components/FormField'
+
+Nova.booting((app, store) => {
+    app.component('index-uploadcare', IndexField)
+    app.component('detail-uploadcare', DetailField)
+    app.component('form-uploadcare', FormField)
 })
