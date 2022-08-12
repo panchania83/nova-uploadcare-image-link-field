@@ -6,7 +6,8 @@ use Laravel\Nova\Fields\Field;
 
 class Uploadcare extends Field
 {
-    public $component = 'uploadcare';
+    public $component = 'nova-uploadcare-field';
+
     public $showOnIndex = false;
 
     public function __construct($name, $attribute = null, $resolveCallback = null)

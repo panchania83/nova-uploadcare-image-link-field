@@ -1,7 +1,5 @@
 <template>
-<p class="">
-    <a v-if="field.value" class="btn btn-link dim cursor-pointer text-80" :href="field.value" target="_blank">View File</a>
-</p>
+  <a v-if="field.value" class="font-bold" :href="field.value" target="_blank">View File</a>
 </template>
 
 <script>

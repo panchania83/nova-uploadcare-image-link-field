@@ -38,7 +38,7 @@
  */
 
 /**
- * @license uploadcare-widget v3.15.0
+ * @license uploadcare-widget v3.18.0
  *
  * Copyright (c) 2020 Uploadcare, Inc.
  *
