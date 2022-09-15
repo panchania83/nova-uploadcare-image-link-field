@@ -1,57 +1,68 @@
 <template>
-    <default-field :field="field">
-        <template slot="field">
-            <div v-if="value" class="mb-3">
-                <a class="btn btn-link text-primary cursor-pointer text-80 mr-3" :href="value" target="_blank">View File</a>
+  <DefaultField :field="field" :errors="errors" :show-help-text="showHelpText">
+    <template #field>
+      <div v-if="value" class="mb-3">
+        <a class="font-bold mr-3" :href="value" target="_blank">View File</a>
 
-                <a class="btn btn-link text-danger opacity-50 cursor-pointer" @click.prevent="clear">Clear</a>
-            </div>
-            <uploadcare
-                    class="btn btn-default btn-primary cursor-pointer"
-                    :id="field.name"
-                    :publicKey="field.key"
-                    imageShrink="2000 x 2000 85%"
-                    @success="onSuccess">
-                <div v-if="value">Upload new file</div>
-                <div v-if="!value">Upload file</div>
-            </uploadcare>
-            <p v-if="hasError" class="my-2 text-danger">
-                {{ firstError }}
-            </p>
-        </template>
-    </default-field>
+        <a class="text-red-500" href="" @click.prevent="clear">Clear</a>
+      </div>
+      <div class="shadow relative bg-primary-500 hover:bg-primary-400 text-white dark:text-gray-900 cursor-pointer rounded text-sm font-bold focus:outline-none focus:ring ring-primary-200 dark:ring-gray-600 inline-flex items-center justify-center h-9 px-3 shadow relative bg-primary-500 hover:bg-primary-400 text-white dark:text-gray-900" @click.prevent="openUploadcare">
+        <div v-if="value">Upload new file</div>
+        <div v-if="!value">Upload file</div>
+      </div>
+    </template>
+  </DefaultField>
 </template>
 
 <script>
-    import {FormField, HandlesValidationErrors} from 'laravel-nova'
-    import Uploadcare from 'uploadcare-vue'
+import {FormField, HandlesValidationErrors} from 'laravel-nova'
 
-    export default {
-        mixins: [FormField, HandlesValidationErrors],
+const uploadcare = require('uploadcare-widget')
 
-        props: ['resourceName', 'resourceId', 'field'],
+export default {
+  mixins: [FormField, HandlesValidationErrors],
 
-        components: {Uploadcare},
+  props: ['resourceName', 'resourceId', 'field'],
 
-        created() {
-        },
-        methods: {
-            setInitialValue() {
-                this.value = this.field.value || ''
-            },
+  methods: {
+    setInitialValue() {
+      this.value = this.field.value || ''
+    },
 
-            fill(formData) {
-                formData.append(this.field.attribute, this.value || '')
-            },
+    openUploadcare() {
+      uploadcare.openDialog(null, {
+        publicKey: this.field.key,
+        multiple: false,
+        crop: false,
+        tabs: 'file url camera dropbox gdrive box skydrive',
+        previewStep: true,
+        imageShrink: '2000 x 2000 85%'
+      }).done((filePromise) => {
+        filePromise.done((file) => {
+          this.value = file.cdnUrl;
+        })
+        filePromise.fail((err) => {
+          Nova.error(err)
+        })
+      }).fail((err) => {
+        Nova.error(err)
+      })
+    },
 
-            onSuccess(file) {
-                console.log(file);
-                this.value = file.cdnUrl;
-            },
+    fill(formData) {
+      formData.append(this.field.attribute, this.value || '')
+    },
 
-            clear() {
-                this.value = null;
-            }
-        }
+    clear() {
+      this.value = null;
     }
+  }
+}
 </script>
+
+<style>
+.uploadcare--button_primary {
+  background-color: #157cfc !important;
+  border-color: #157cfc !important;
+}
+</style>
