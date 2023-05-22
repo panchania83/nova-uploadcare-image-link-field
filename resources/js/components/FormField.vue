@@ -3,7 +3,6 @@
     <template #field>
       <div v-if="value" class="mb-3">
         <input type="text" class="w-full form-control form-input form-input-bordered" :value="value" style=" width: 100%; "/>
-        <a class="text-red-500" href="" @click.prevent="clear">Clear</a>
       </div>
       <div class="shadow relative bg-primary-500 hover:bg-primary-400 text-white dark:text-gray-900 cursor-pointer rounded text-sm font-bold focus:outline-none focus:ring ring-primary-200 dark:ring-gray-600 inline-flex items-center justify-center h-9 px-3 shadow relative bg-primary-500 hover:bg-primary-400 text-white dark:text-gray-900" @click.prevent="openUploadcare">
         <div v-if="value">Upload new file</div>
