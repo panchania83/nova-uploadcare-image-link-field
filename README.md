@@ -23,13 +23,13 @@ Add Uploadcare Public Key to your `config/services.php` array
 Register the field in the Nova resource:
 
 ```php
-use panchania83\NovaUploadcareField\Uploadcare;
+use panchania83\NovaUploadcareField\UploadcareImageLink;
 ```
 
 Use the field:
 
 ```php
-Uploadcare::make('File')
+UploadcareImageLink::make('File')
 ```
 ## License
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
