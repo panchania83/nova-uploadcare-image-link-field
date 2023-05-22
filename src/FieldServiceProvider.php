@@ -1,6 +1,6 @@
 <?php
 
-namespace Enflow\NovaUploadcareField;
+namespace panchania83\NovaUploadcareField;
 
 use Illuminate\Support\ServiceProvider;
 use Laravel\Nova\Events\ServingNova;
