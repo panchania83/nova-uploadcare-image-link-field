@@ -1,6 +1,6 @@
 <?php
 
-namespace panchania83\NovaUploadcareField\Exceptions;
+namespace Enflow\NovaUploadcareField\Exceptions;
 
 use Exception;
 

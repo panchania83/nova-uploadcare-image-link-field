@@ -1,66 +1,55 @@
 <template>
-  <DefaultField :field="field" :errors="errors" :show-help-text="showHelpText">
-    <template #field>
-      <div v-if="value" class="mb-3">
-        <input type="text" class="w-full form-control form-input form-input-bordered" :value="value" style=" width: 100%; "/>
-      </div>
-      <div class="shadow relative bg-primary-500 hover:bg-primary-400 text-white dark:text-gray-900 cursor-pointer rounded text-sm font-bold focus:outline-none focus:ring ring-primary-200 dark:ring-gray-600 inline-flex items-center justify-center h-9 px-3 shadow relative bg-primary-500 hover:bg-primary-400 text-white dark:text-gray-900" @click.prevent="openUploadcare">
-        <div v-if="value">Upload new file</div>
-        <div v-if="!value">Upload file</div>
-      </div>
-    </template>
-  </DefaultField>
+    <default-field :field="field">
+        <template slot="field">
+            <div v-if="value" class="mb-3">
+                <input type="text" class="w-full form-control form-input form-input-bordered" :value="value" style=" width: 100%; "/>
+            </div>
+            <uploadcare
+                    class="btn btn-default btn-primary cursor-pointer"
+                    :id="field.name"
+                    :publicKey="field.key"
+                    imageShrink="2000 x 2000 85%"
+                    @success="onSuccess">
+                <div v-if="value">Upload new file</div>
+                <div v-if="!value">Upload file</div>
+            </uploadcare>
+            <p v-if="hasError" class="my-2 text-danger">
+                {{ firstError }}
+            </p>
+        </template>
+    </default-field>
 </template>
 
 <script>
-import {FormField, HandlesValidationErrors} from 'laravel-nova'
+    import {FormField, HandlesValidationErrors} from 'laravel-nova'
+    import Uploadcare from 'uploadcare-vue'
 
-const uploadcare = require('uploadcare-widget')
+    export default {
+        mixins: [FormField, HandlesValidationErrors],
 
-export default {
-  mixins: [FormField, HandlesValidationErrors],
+        props: ['resourceName', 'resourceId', 'field'],
 
-  props: ['resourceName', 'resourceId', 'field'],
+        components: {Uploadcare},
 
-  methods: {
-    setInitialValue() {
-      this.value = this.field.value || ''
-    },
+        created() {
+        },
+        methods: {
+            setInitialValue() {
+                this.value = this.field.value || ''
+            },
 
-    openUploadcare() {
-      uploadcare.openDialog(null, {
-        publicKey: this.field.key,
-        multiple: false,
-        crop: false,
-        tabs: 'file url camera dropbox gdrive box skydrive',
-        previewStep: true,
-        imageShrink: '2000 x 2000 85%'
-      }).done((filePromise) => {
-        filePromise.done((file) => {
-          this.value = file.cdnUrl;
-        })
-        filePromise.fail((err) => {
-          Nova.error(err)
-        })
-      }).fail((err) => {
-        Nova.error(err)
-      })
-    },
+            fill(formData) {
+                formData.append(this.field.attribute, this.value || '')
+            },
 
-    fill(formData) {
-      formData.append(this.field.attribute, this.value || '')
-    },
+            onSuccess(file) {
+                console.log(file);
+                this.value = file.cdnUrl;
+            },
 
-    clear() {
-      this.value = null;
+            clear() {
+                this.value = null;
+            }
+        }
     }
-  }
-}
 </script>
-
-<style>
-.uploadcare--button_primary {
-  background-color: #157cfc !important;
-  border-color: #157cfc !important;
-}
-</style>
