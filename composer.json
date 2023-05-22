@@ -1,5 +1,5 @@
 {
-    "name": "enflow/nova-uploadcare-field",
+    "name": "panchania83/nova-uploadcare-field",
     "description": "A Laravel Nova Uploadcare file upload field.",
     "keywords": [
         "laravel",
@@ -11,13 +11,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Enflow\\NovaUploadcareField\\": "src/"
+            "panchania83\\NovaUploadcareField\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Enflow\\NovaUploadcareField\\FieldServiceProvider"
+                "panchania83\\NovaUploadcareField\\FieldServiceProvider"
             ]
         }
     },

@@ -1,10 +1,10 @@
 <?php
 
-namespace Enflow\NovaUploadcareField;
+namespace panchania83\NovaUploadcareField;
 
 use Laravel\Nova\Fields\Field;
 
-class Uploadcare extends Field
+class UploadcareImageLink extends Field
 {
     public $component = 'uploadcare';
     public $showOnIndex = false;
