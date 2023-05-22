@@ -6,7 +6,7 @@ use Laravel\Nova\Fields\Field;
 
 class UploadcareImageLink extends Field
 {
-    public $component = 'uploadcare-image-link';
+    public $component = 'uploadcare';
     public $showOnIndex = false;
 
     public function __construct($name, $attribute = null, $resolveCallback = null)
