@@ -185,9 +185,9 @@ module.exports = __webpack_require__(16);
 /***/ (function(module, exports, __webpack_require__) {
 
 Nova.booting(function (Vue, router) {
-    Vue.component('index-uploadcare', __webpack_require__(3));
-    Vue.component('detail-uploadcare', __webpack_require__(6));
-    Vue.component('form-uploadcare', __webpack_require__(9));
+    Vue.component('index-uploadcare-image-link', __webpack_require__(3));
+    Vue.component('detail-uploadcare-image-link', __webpack_require__(6));
+    Vue.component('form-uploadcare-image-link', __webpack_require__(9));
 });
 
 /***/ }),
